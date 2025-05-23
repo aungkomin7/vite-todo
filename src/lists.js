@@ -55,7 +55,7 @@ export const editList = (listId) => {
     "border-b",
     "px-1",
     "focus-visible:outline-none",
-    "w-[230px]"
+    "w-[180px]"
   );
   taskInfo.after(newTaskInput);
   newTaskInput.value = taskInfo.innerText;
