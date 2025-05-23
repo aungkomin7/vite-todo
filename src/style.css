@@ -1,0 +1,12 @@
+@import "tailwindcss";
+/* @import url("../node_modules/animate.css/animate.css"); */
+@import url("../node_modules/sweetalert2/dist/sweetalert2.min.css");
+
+.swal2-confirm {
+  @apply bg-stone-950 hover:bg-green-500 duration-200 outline-none;
+}
+
+.swal2-cancel {
+  @apply bg-stone-500 hover:bg-red-500 duration-200 outline-none;
+}
+

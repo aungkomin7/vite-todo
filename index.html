@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Primary Meta Tags -->
+    <title>My Todo</title>
+    <meta name="title" content="My Todo " />
+    <meta name="description" content="todo web app" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://metatags.io/" />
+    <meta property="og:title" content="My Todo " />
+    <meta property="og:description" content="todo web app" />
+    <meta
+      property="og:image"
+      content="https://cff2.earth.com/uploads/2023/11/30185539/bottlenose-dolphin_1medium.jpg"
+    />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://metatags.io/" />
+    <meta property="twitter:title" content="My Todo " />
+    <meta property="twitter:description" content="todo web app" />
+    <meta
+      property="twitter:image"
+      content="https://cff2.earth.com/uploads/2023/11/30185539/bottlenose-dolphin_1medium.jpg"
+    />
+    <link
+      rel="icon"
+      href="./images/dolphin.png"
+      type="image/png"
+      sizes="64x64"
+    />
+
+    <!-- Meta Tags Generated with https://metatags.io -->
+  </head>
+  <body class="bg-stone-200">
+    <main
+      class="relative mx-auto mt-5 bg-stone-50 w-[450px] max-sm:w-[400px] min-h-[550px] p-10 rounded-lg shadow-md overflow-y-auto"
+    >
+      <header>
+        <h1 class="text-3xl text-shadow-stone-950 font-serif font-bold mb-5">
+          Your To Do
+        </h1>
+        <img
+          class="size-14 absolute  top-3 left-0.5 rotate-9 grayscale-100 hover:grayscale-0 animate__animated animate__pulse animate__slow  animate__infinite	infinite"
+          src="./images/dolphin.png"
+          alt=""
+        />
+      </header>
+      <section>
+        <div class="flex gap-2 mb-5">
+          <input
+            class="border-b flex-grow px-2 focus-visible:outline-none"
+            id="textInput"
+            type="text"
+            placeholder="Add new task"
+            autocomplete="off"
+          />
+          <button
+            class="border size-10 flex justify-center items-center rounded-lg bg-stone-950 active:scale-95 duration-100"
+            id="addTaskBtn"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="size-5 stroke-white"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 4.5v15m7.5-7.5h-15"
+              />
+            </svg>
+          </button>
+        </div>
+      </section>
+
+      <section>
+        <div class="flex justify-between items-center mb-5">
+          <h3 class="text-lg text-stone-950 font-serif">Your Tasks</h3>
+          <div class="border px-3 rounded-full">
+            <span id="doneTaskTotal">0</span>
+            <span>/</span>
+            <span id="taskTotal">0</span>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div id="listGroup">
+          <div class="last:block hidden">
+            <div class="flex flex-col items-center gap-y-2 mt-16">
+              <img class="h-36" src="./images/empty.svg" alt="" />
+              <p class="text-stone-500">There is no list.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <section>
+      <div class="flex justify-center gap-2 mt-2">
+        <button
+          class="px-3 py-1.5 rounded-md bg-black text-white text-sm active:scale-95 duration-100"
+          id="allCheckBtn"
+        >
+          Check All
+        </button>
+        <button
+          class="px-3 py-1.5 rounded-md bg-black text-white text-sm active:scale-95 duration-100"
+          id="allUnCheckBtn"
+        >
+          Uncheck All
+        </button>
+        <button
+          class="px-3 py-1.5 rounded-md bg-black text-white text-sm active:scale-95 duration-100"
+          id="allDelBtn"
+        >
+          Delete All
+        </button>
+      </div>
+    </section>
+
+    <template id="listTemplate">
+      <div class="list">
+        <div
+          class="flex border items-center justify-between p-5 min:h-[70px] rounded-lg mb-3 animate__animated animate__bounceIn duration-200 child-list"
+        >
+          <div class="flex items-center gap-2">
+            <input
+              class="size-4 accent-stone-950 check-input"
+              type="checkbox"
+            />
+            <p class="task-info font-mono">${currenttask}</p>
+          </div>
+          <div class="flex items-center gap-5">
+            <button class="active:scale-95 duration-100 edit-btn">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="size-5 pointer-events-none stroke-2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"
+                />
+              </svg>
+            </button>
+            <button class="active:scale-95 duration-100 del-btn">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="size-5 pointer-events-none stroke-2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </template>
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
